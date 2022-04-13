@@ -34,7 +34,7 @@ const ShariaHubLending = artifacts.require('ShariaHubLending')
 const MockStorage = artifacts.require('MockStorage')
 const LeakGasContract = artifacts.require('LeakGasContract')
 
-contract('ShariaHubLending', function([owner, borrower, investor, investor2, investor3, investor4, localNode, ShariaHubTeam, community, arbiter, systemFeesCollector]) {
+contract('ShariaHubLending', function([owner, borrower, investor, investor2, investor3, investor4,  ShariaHubTeam, community, arbiter, systemFeesCollector]) {
     beforeEach(async function() {
         await advanceBlock()
 
@@ -53,7 +53,7 @@ contract('ShariaHubLending', function([owner, borrower, investor, investor2, inv
 
         this.actors = {
             'borrower': borrower,
-            'localNode': localNode,
+            // 'localNode': localNode,
             'ShariaHubTeam': ShariaHubTeam,
             'systemFeesCollector': systemFeesCollector
         }
@@ -62,7 +62,7 @@ contract('ShariaHubLending', function([owner, borrower, investor, investor2, inv
 
         this.mockStorage = await MockStorage.new()
 
-        await this.mockStorage.setBool(utils.soliditySha3("user", "localNode", localNode), true)
+        // await this.mockStorage.setBool(utils.soliditySha3("user", "localNode", localNode), true)
         await this.mockStorage.setBool(utils.soliditySha3("user", "representative", borrower), true)
 
         this.lending = await ShariaHubLending.new(
@@ -102,7 +102,7 @@ contract('ShariaHubLending', function([owner, borrower, investor, investor2, inv
         })
 
         it('should not allow create projects with unregistered local nodes', async function() {
-            this.actors.localNode = arbiter
+            // this.actors.localNode = arbiter
             await ShariaHubLending.new(
                 this.mockStorage.address,
                 this.loanParams,
@@ -405,7 +405,7 @@ contract('ShariaHubLending', function([owner, borrower, investor, investor2, inv
             
             let actors = {
                 'borrower': borrower,
-                'localNode': localNode,
+                // 'localNode': localNode,
                 'ShariaHubTeam': ShariaHubTeam,
                 'systemFeesCollector': systemFeesCollector
             }
@@ -442,7 +442,8 @@ contract('ShariaHubLending', function([owner, borrower, investor, investor2, inv
             
             let actors = {
                 'borrower': borrower,
-                'localNode': localNode,
+                // 'localNode': localNode,
+
                 'ShariaHubTeam': ShariaHubTeam,
                 'systemFeesCollector': systemFeesCollector
             }
@@ -733,7 +734,7 @@ contract('ShariaHubLending', function([owner, borrower, investor, investor2, inv
 
             let actors = {
                 'borrower': borrower,
-                'localNode': localNode,
+                // 'localNode': localNode,
                 'ShariaHubTeam': ShariaHubTeam,
                 'systemFeesCollector': systemFeesCollector
             }
@@ -851,7 +852,7 @@ contract('ShariaHubLending', function([owner, borrower, investor, investor2, inv
 
             let actors = {
                 'borrower': borrower,
-                'localNode': localNode,
+                // 'localNode': localNode,
                 'ShariaHubTeam': ShariaHubTeam,
                 'systemFeesCollector': systemFeesCollector
             }
@@ -911,7 +912,7 @@ contract('ShariaHubLending', function([owner, borrower, investor, investor2, inv
 
             let actors = {
                 'borrower': borrower,
-                'localNode': localNode,
+                // 'localNode': localNode,
                 'ShariaHubTeam': ShariaHubTeam,
                 'systemFeesCollector': systemFeesCollector
             }
@@ -966,7 +967,7 @@ contract('ShariaHubLending', function([owner, borrower, investor, investor2, inv
 
             let actors = {
                 'borrower': borrower,
-                'localNode': localNode,
+                // 'localNode': localNode,
                 'ShariaHubTeam': ShariaHubTeam,
                 'systemFeesCollector': systemFeesCollector
             }
@@ -1020,7 +1021,7 @@ contract('ShariaHubLending', function([owner, borrower, investor, investor2, inv
 
             let actors = {
                 'borrower': borrower,
-                'localNode': localNode,
+                // 'localNode': localNode,
                 'ShariaHubTeam': ShariaHubTeam,
                 'systemFeesCollector': systemFeesCollector
             }
@@ -1074,7 +1075,7 @@ contract('ShariaHubLending', function([owner, borrower, investor, investor2, inv
 
             let actors = {
                 'borrower': borrower,
-                'localNode': localNode,
+                // 'localNode': localNode,
                 'ShariaHubTeam': ShariaHubTeam,
                 'systemFeesCollector': systemFeesCollector
             }
@@ -1132,7 +1133,7 @@ contract('ShariaHubLending', function([owner, borrower, investor, investor2, inv
 
             let actors = {
                 'borrower': borrower,
-                'localNode': localNode,
+                // 'localNode': localNode,
                 'ShariaHubTeam': ShariaHubTeam,
                 'systemFeesCollector': systemFeesCollector
             }
@@ -1427,7 +1428,7 @@ contract('ShariaHubLending', function([owner, borrower, investor, investor2, inv
 
             let actors = {
                 'borrower': borrower,
-                'localNode': localNode,
+                // 'localNode': localNode,
                 'ShariaHubTeam': ShariaHubTeam,
                 'systemFeesCollector': systemFeesCollector
             }
@@ -1509,7 +1510,7 @@ contract('ShariaHubLending', function([owner, borrower, investor, investor2, inv
 
             let actors = {
                 'borrower': borrower,
-                'localNode': localNode,
+                // 'localNode': localNode,
                 'ShariaHubTeam': leakGasContract.address,
                 'systemFeesCollector': systemFeesCollector
             }
